@@ -2,17 +2,17 @@
 using namespace std;
 
 Window::Window(std::string_view title, int width, int height)
-    : m_title{title}, m_width{width}, m_height{height}
+    : m_title{title}, m_size{width, height}
 {
 }
 
 Window::Window()
-    : Window{WindowDefault::gameTitle, WindowDefault::windowDefaultWidth, WindowDefault::windowDefaultHeight}
+    : Window{WindowDefault::game_title, WindowDefault::window_default_width, WindowDefault::window_default_height}
 {
 }
 
 void Window::open() {
-    InitWindow(m_width, m_height, m_title.c_str());
+    InitWindow(m_size.width, m_size.height, m_title.c_str());
     SetTargetFPS(60);
 }
 
