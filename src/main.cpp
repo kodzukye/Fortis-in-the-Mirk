@@ -1,5 +1,6 @@
 #include "window.h"
-#include "animated_sprite.h"
+#include "input_manager.h"
+#include "player.h"
 #include "texture_manager.h"
 
 int main() {
@@ -7,24 +8,16 @@ int main() {
     window.open();
 
     TextureManager textures{};
+    InputManager input{};
 
-    AnimatedSprite sprite{};
-    sprite.addAnimation("idle",
-        Animation{
-        textures.get("assets/images/sprites/player/Idle.png"),
-        Size{96, 84},
-        7,
-        10.0f,
-        true
-    });
-    sprite.playAnimation("idle");
+    Player player{textures, Vector2(200.0f, 200.0f)};
 
     while (!WindowShouldClose()) {
-        sprite.updateAnimation(GetFrameTime());
+        player.update(GetFrameTime(), input);
 
         BeginDrawing();
         ClearBackground(BLACK);
-        sprite.draw(Vector2(200.0f, 200.0f));
+        player.draw();
         EndDrawing();
     }
 
