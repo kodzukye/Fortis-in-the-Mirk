@@ -24,6 +24,8 @@ add_executable(fortis_in_the_mirk
         src/types.h
         src/animated_sprite.cpp
         src/animated_sprite.h
+        src/texture_manager.cpp
+        src/texture_manager.h
 )
 target_link_libraries(fortis_in_the_mirk PRIVATE raylib)
 

@@ -1,16 +1,17 @@
 #include "window.h"
 #include "animated_sprite.h"
+#include "texture_manager.h"
 
 int main() {
     Window window{};
     window.open();
 
-    Texture2D playerIdle{LoadTexture("assets/images/sprites/player/Idle.png")};
+    TextureManager textures{};
 
     AnimatedSprite sprite{};
     sprite.addAnimation("idle",
         Animation{
-        playerIdle,
+        textures.get("assets/images/sprites/player/Idle.png"),
         Size{96, 84},
         7,
         10.0f,
@@ -27,7 +28,7 @@ int main() {
         EndDrawing();
     }
 
-    UnloadTexture(playerIdle);
+    textures.unloadAll();
     window.close();
 
     return 0;
