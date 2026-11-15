@@ -15,10 +15,10 @@ int main() {
     while (!WindowShouldClose()) {
         player.update(GetFrameTime(), input);
 
-        BeginDrawing();
+        window.beginGameDrawing();
         ClearBackground(BLACK);
         player.draw();
-        EndDrawing();
+        window.endGameDrawing();
     }
 
     textures.unloadAll();
